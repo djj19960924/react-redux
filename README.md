@@ -14,7 +14,7 @@ Redux:
     npm install --save-dev redux
 ##Redux
   1.store
-    - 管理state
+    - 管理state，唯一的数据源：action
     - 管理reducer
   2.reducer
     - 负责修改state状态值
@@ -31,3 +31,20 @@ Redux:
     - store.getState();
   6.监听state变化
     - store.subscribe(callback)
+
+##redux处理异步任务
+  1.redux本身不能处理异步任务
+  2.需要使用中间件：redux-thunk
+  3.npm install redux-thunk
+  4.在创建store对象的时候声明使用中间件：const store = createStore(counterReducer,applyMiddleware(thunk));
+##同步action和异步action定义方法
+  1.同步action：直接定义方法返回对应的action对象
+  2.异步action：核心思想：异步action返回值还是一个函数，redux会自动将dispatch注入，什么时候分发action使用者说了算
+    export const asyncIncrementAction = function(number) {
+      return dispatch => {
+        //在分发之前处理异步行为:发送ajax请求，开启定时器
+        setTimeout(()=>{
+          dispatch(incrementAction(number));
+        },2000);
+      }
+    }
