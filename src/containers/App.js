@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import App from '../components/App';
-import { incrementAction,decrementAction }  from '../store/actions'
+import { incrementAction,decrementAction,asyncIncrementAction }  from '../store/actions'
 
 
 //使用connect对UI组件进行包装，目的：映射redux中的state和dispatch到UI组件的props中
@@ -15,5 +15,5 @@ import { incrementAction,decrementAction }  from '../store/actions'
 
 export default connect(
   state => ({count:state}),
-  {incrementAction,decrementAction}
+  {incrementAction,decrementAction,asyncIncrementAction}
 )(App);

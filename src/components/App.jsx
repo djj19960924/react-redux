@@ -29,9 +29,11 @@ class App extends Component {
     }
   }
   handleAsyncIncrement = () => {
-    setTimeout(() => {
-      this.increment();
-    }, 1000);
+    // setTimeout(() => {
+    //   this.increment();
+    // }, 1000);
+    let value = this.refs.selectDOM.value*1;
+    this.props.asyncIncrementAction(value);
   }
   render() { 
     //从redux的store对象中获取state的值

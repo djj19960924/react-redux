@@ -1,8 +1,12 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import counterReducer from './reducer';
+import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension'
 
 //1.创建store对象
-const store = createStore(counterReducer);
+const store = createStore(counterReducer,composeWithDevTools(
+  applyMiddleware(thunk)
+));
 
 //2.暴露store对象
 export default store;

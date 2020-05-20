@@ -8,3 +8,11 @@
 export const incrementAction = (number) => ({type:'increment',data:number});
 //累减的action
 export const decrementAction = (number) => ({type:'decrement',data:number});
+
+export const asyncIncrementAction = function(number) {
+  return (dispatch) => {
+    setTimeout(() => {
+      dispatch(incrementAction(number))
+    }, 2000);
+  }
+}
